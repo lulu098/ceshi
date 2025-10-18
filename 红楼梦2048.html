@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浏览器主页</title>
+  <!-- 引入Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0C63E4',
+            secondary: '#F0F0F0',
+            dark: '#1A1A1A',
+          },
+          fontFamily: {
+            sans: ['Segoe UI', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <!-- 自定义样式 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .shortcut-hover {
+        @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
+      }
+      .search-focus {
+        @apply focus:outline-none focus:ring-2 focus:ring-primary/50;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-dark text-white overflow-x-hidden">
+  <!-- 背景图片 -->
+  <div class="fixed inset-0 z-0">
+    <!-- <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/388fc489d9d74483a28ded7f1e23ee7d.png~tplv-a9rns2rl98-24:720:720.png?rcl=202510181304000256AE2192615DD5D570&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1761368640&x-signature=KCoR0DOGrqhheWsY8RCVsO%2Bi8o8%3D" 
+         alt="背景风景" 
+         class="w-full h-full object-cover opacity-90"> -->
+    <!-- 渐变遮罩，使文字更清晰 -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
+  </div>
+
+  <!-- 主内容 -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+    <!-- 顶部天气和菜单 -->
+    <header class="flex justify-between items-center p-4">
+      <button class="p-2 rounded-full hover:bg-white/10 transition-colors">
+        <i class="fa fa-th text-xl"></i>
+      </button>
+      <div class="flex items-center space-x-2 bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-sm">
+        <span>大连市</span>
+        <i class="fa fa-sun-o text-yellow-300"></i>
+        <span>7°C</span>
+        <button class="ml-1 p-1 hover:bg-white/10 rounded-full">
+          <i class="fa fa-cog text-sm"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- 中央搜索框 -->
+    <div class="flex-grow flex flex-col items-center justify-center px-4">
+      <div class="w-full max-w-2xl mt-10">
+        <div class="relative">
+          <input type="text" 
+                 placeholder="搜索网页" 
+                 class="w-full py-3 px-5 pr-14 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white placeholder-white/60 search-focus">
+          <button class="absolute right-0 top-0 h-full px-5 bg-primary rounded-r-full hover:bg-primary/90 transition-colors">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 快捷访问图标 -->
+    <div class="px-4 pb-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-10 gap-4">
+          <!-- 快捷方式图标 -->
+          <div class="shortcut-hover">
+            <a href="#" class="flex flex-col items-center p-2">
+              <div class="w-12 h-12 rounded-lg bg-blue-600/90 flex items-center justify-center mb-1">
+                <i class="fa fa-search text-white"></i>
+              </div>
+              <span class="text-xs text-white/90 truncate w-full text-center">必应搜索</span>
+            </a>
+          </div>
+          
+          <div class="shortcut-hover">
+            <a href="#" class="flex flex-col items-center p-2">
+              <div class="w-12 h-12 rounded-lg bg-red-600/90 flex items-center justify-center mb-1">
+                <i class="fa fa-music text-white"></i>
+              </div>
+              <span class="text-xs text-white/90 truncate w-full text-center">抖音</span>
+            </a>
+          </div>
+          
+          <div class="shortcut-hover">
+            <a href="#" class="flex flex-col items-center p-2">
+              <div class="w-12 h-12 rounded-lg bg-red-700/90 flex items-center justify-center mb-1">
+                <i class="fa fa-shopping-cart text-white"></i>
+              </div>
+              <span class="text-xs text-white/90 truncate w-full text-center">京东热卖</span>
+            </a>
+          </div>
+          
+          <div class="shortcut-hover">
+            <a href="#" class="flex flex-col items-center p-2">
+              <div class="w-12 h-12 rounded-lg bg-blue-500/90 flex items-center justify-center mb-1">
+                <i class="fa fa-robot text-white"></i>
+              </div>
+              <span class="text-xs text-white/90 truncate w-full text-center">豆包AI助手</span>
+            </a>
+          </div>
+          
+          <div class="shortcut-hover">
+            <a href="#" class="flex flex-col items-center p-2">
+              <div class="w-12 h-12 rounded-lg bg-orange-500/90 flex items-center justify-center mb-1">
+                <i class="fa fa-shopping-bag text-white"></i>
+              </div>
+              <span class="text-xs text-white/90 truncate w-full text-center">阿里1688</span>
+            </a>
+          </div>
+          
+          <div class="shortcut-hover">
+            <a href="#" class="flex flex-col items-center p-2">
+              <div class="w-12 h-12 rounded-lg bg-green-600/90 flex items-center justify-center mb-1">
+                <i class="fa fa-gamepad text-white"></i>
+              </div>
+              <span class="text-xs text-white/90 truncate w-full text-center">梦幻游戏传奇</span>
+            </a>
+          </div>
+          
+          <div class="shortcut-hover">
+            <a href="#" class="flex flex-col items-center p-2">
+              <div class="w-12 h-12 rounded-lg bg-purple-600/90 flex items-center justify-center mb-1">
+                <i class="fa fa-play-circle text-white"></i>
+              </div>
+              <span class="text-xs text-white/90 truncate w-full text-center">爱奇艺</span>
+            </a>
+          </div>
+          
+          <div class="shortcut-hover">
+            <a href="#" class="flex flex-col items-center p-2">
+              <div class="w-12 h-12 rounded-lg bg-indigo-600/90 flex items-center justify-center mb-1">
+                <i class="fa fa-gamepad text-white"></i>
+              </div>
+              <span class="text-xs text-white/90 truncate w-full text-center">精品游戏</span>
+            </a>
+          </div>
+          
+          <div class="shortcut-hover">
+            <a href="#" class="flex flex-col items-center p-2">
+              <div class="w-12 h-12 rounded-lg bg-blue-400/90 flex items-center justify-center mb-1">
+                <i class="fa fa-plane text-white"></i>
+              </div>
+              <span class="text-xs text-white/90 truncate w-full text-center">携程旅行</span>
+            </a>
+          </div>
+          
+          <div class="shortcut-hover">
+            <a href="#" class="flex flex-col items-center p-2">
+              <div class="w-12 h-12 rounded-lg bg-red-500/90 flex items-center justify-center mb-1">
+                <i class="fa fa-shopping-basket text-white"></i>
+              </div>
+              <span class="text-xs text-white/90 truncate w-full text-center">天猫</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <footer class="mt-auto bg-black/40 backdrop-blur-md py-3 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-wrap items-center justify-between">
+          <div class="flex items-center mb-2 sm:mb-0">
+            <span class="text-sm text-white/70 mr-4">msn</span>
+            <div class="flex space-x-4">
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">发现</a>
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">游戏</a>
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">资讯</a>
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">体育</a>
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">小游戏</a>
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">财经</a>
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">导航</a>
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">天气</a>
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">视频</a>
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">AI大全</a>
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">日历</a>
+              <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">考试</a>
+            </div>
+          </div>
+          
+          <div class="flex items-center space-x-4">
+            <button class="text-sm text-white/70 hover:text-white transition-colors flex items-center">
+              <i class="fa fa-th-large mr-1"></i> 页面布局
+            </button>
+            <button class="text-sm text-white/70 hover:text-white transition-colors flex items-center">
+              <i class="fa fa-sliders mr-1"></i> 个性化设置
+            </button>
+            <span class="text-xs text-white/50">广告</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- 简单的交互脚本 -->
+  <script>
+    // 搜索框聚焦效果
+    const searchInput = document.querySelector('input[type="text"]');
+    searchInput.addEventListener('focus', () => {
+      document.querySelector('.relative').classList.add('scale-[1.02]');
+      document.querySelector('.relative').style.transition = 'transform 0.3s ease';
+    });
+    
+    searchInput.addEventListener('blur', () => {
+      document.querySelector('.relative').classList.remove('scale-[1.02]');
+    });
+    
+    // 模拟天气更新
+    setInterval(() => {
+      const tempEl = document.querySelector('.flex.items-center.space-x-2 span:last-of-type:not(.ml-1)');
+      const currentTemp = parseInt(tempEl.textContent);
+      // 随机小幅度波动温度
+      const newTemp = currentTemp + (Math.random() > 0.5 ? 1 : -1);
+      tempEl.textContent = `${newTemp}°C`;
+    }, 300000); // 每5分钟更新一次
+  </script>
+</body>
+</html>
