@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ffcce6, #c6e2ff);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #ff66b2;
+    font-size: 2.8rem;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.game-info {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.info-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff66b2;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.card {
+    height: 120px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-front {
+    background: linear-gradient(135deg, #ffb3d9, #ff80bf);
+    color: white;
+    font-size: 2.5rem;
+}
+
+.card-back {
+    background: white;
+    transform: rotateY(180deg);
+    font-size: 2.5rem;
+}
+
+.card.matched .card-back {
+    background: linear-gradient(135deg, #b3ffb3, #80ff80);
+}
+
+.controls {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    background: linear-gradient(135deg, #ff80bf, #ff4da6);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.difficulty {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.difficulty button {
+    background: linear-gradient(135deg, #80b3ff, #4d94ff);
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+
+.message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 100;
+    display: none;
+}
+
+.message h2 {
+    color: #ff66b2;
+    margin-bottom: 15px;
+}
+
+.message p {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .card {
+        height: 100px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+}

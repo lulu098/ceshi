@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可爱翻牌记忆游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>可爱翻牌记忆游戏</h1>
+        
+        <div class="game-info">
+            <div class="info-item">
+                <div class="info-label">时间</div>
+                <div class="info-value" id="timer">0</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">移动次数</div>
+                <div class="info-value" id="moves">0</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">匹配数</div>
+                <div class="info-value" id="matches">0</div>
+            </div>
+        </div>
+        
+        <div class="game-board" id="game-board"></div>
+        
+        <div class="controls">
+            <button id="start-btn">开始游戏</button>
+            <button id="reset-btn">重新开始</button>
+        </div>
+        
+        <div class="difficulty">
+            <button data-level="easy">简单 (4x3)</button>
+            <button data-level="medium">中等 (4x4)</button>
+            <button data-level="hard">困难 (4x5)</button>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="message" id="message">
+        <h2>恭喜！</h2>
+        <p>你成功完成了游戏！</p>
+        <p id="final-stats"></p>
+        <button id="close-message">继续游戏</button>
+    </div>
+    
+    <audio id="flip-sound" src="A Bass.wav"></audio>
+    <audio id="match-sound" src="A Bass.wav"></audio>
+    <audio id="win-sound" src="A Bass.wav"></audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>
